@@ -15,7 +15,7 @@ import java.net.URISyntaxException;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class CustomerControllerTest {
+class CustomerControllerRestTemplTest {
 
     @LocalServerPort
     private int port;

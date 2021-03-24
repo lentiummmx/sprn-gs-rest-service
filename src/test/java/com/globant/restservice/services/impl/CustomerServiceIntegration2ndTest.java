@@ -1,20 +1,31 @@
 package com.globant.restservice.services.impl;
 
+import com.globant.restservice.configs.CustomerServiceTestCntxtConfg;
 import com.globant.restservice.models.Customer;
 import com.globant.restservice.services.ICustomerService;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
-class CustomerServiceTest {
+//@RunWith(SpringRunner.class)  // JUnit4
+@ExtendWith(SpringExtension.class)  // JUnit 5
+//@SpringBootTest
+@Import(CustomerServiceTestCntxtConfg.class)
+class CustomerServiceIntegration2ndTest {
 
-    @Autowired
+//    @Autowired
+    @Resource(name = "customerServiceTest")
     private ICustomerService customerService;
 
     @Test
