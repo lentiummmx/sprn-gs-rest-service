@@ -1,6 +1,7 @@
 package com.globant.restservice.controllers;
 
 import com.globant.restservice.models.Customer;
+import com.globant.restservice.services.ICustomerService;
 import com.globant.restservice.services.impl.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +18,10 @@ public class CustomerController {
 
     private static final Logger log = LoggerFactory.getLogger(CustomerController.class);
 
-    private final CustomerService customerService;
+    private final ICustomerService customerService;
 
     @Autowired
-    public CustomerController(CustomerService customerService) {
+    public CustomerController(ICustomerService customerService) {
         this.customerService = customerService;
     }
 
@@ -32,8 +33,8 @@ public class CustomerController {
     }
 
     @GetMapping("/customer/{id}")
-    public Optional<Customer> findById(@PathVariable("id") Long id) {
-        Optional<Customer> customer = customerService.findById(id);
+    public Customer findById(@PathVariable("id") Long id) {
+        Customer customer = customerService.findById(id.longValue());
         log.info(customer.toString());
         return customer;
     }

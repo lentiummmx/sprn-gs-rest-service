@@ -37,7 +37,7 @@ public class RestServiceCfg {
             log.info("");
 
             // fetch an individual customer by ID
-            Optional<Customer> customer = repository.findById(1L);
+            Customer customer = repository.findById(1L);
             log.info("Customer found with findById(1L):");
             log.info("--------------------------------");
             log.info(customer.toString());
