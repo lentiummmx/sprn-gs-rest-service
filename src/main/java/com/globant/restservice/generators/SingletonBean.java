@@ -9,6 +9,10 @@ public class SingletonBean {
     
     private SingletonBean() {}
 
+    /**
+     * Optimized singleton getInstance method
+     * @return SingletonBean instance
+     */
     public static SingletonBean getInstance() {
         if (INSTANCE == null) {
             //synchronized (SingletonBean.class) {
