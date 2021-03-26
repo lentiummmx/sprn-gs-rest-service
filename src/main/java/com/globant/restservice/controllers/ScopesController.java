@@ -52,30 +52,39 @@ public class ScopesController {
     private static final String NAME_OTHER = "Anna Jones";
 
     @RequestMapping("/request")
-    public String getRequestScopeMessage() {
+    public String getRequestScopeMessage(final Model model) {
+        model.addAttribute("previousMessage", requestScopedBean.getMessage());
         logger.info("previousMessage : {}", requestScopedBean.getMessage());
         requestScopedBean.setMessage("Good morning!");
         logger.info("currentMessage : {}", requestScopedBean.getMessage());
+        model.addAttribute("currentMessage", requestScopedBean.getMessage());
         //return requestScopedBean.getMessage();
-        return requestScopedBean.toString();
+        //return requestScopedBean.toString();
+        return "scopesExample";
     }
 
     @RequestMapping("/session")
-    public String getSessionScopeMessage() {
+    public String getSessionScopeMessage(final Model model) {
+        model.addAttribute("previousMessage", sessionScopedBean.getMessage());
         logger.info("previousMessage : {}", sessionScopedBean.getMessage());
         sessionScopedBean.setMessage("Good afternoon!");
         logger.info("currentMessage : {}", sessionScopedBean.getMessage());
+        model.addAttribute("currentMessage", sessionScopedBean.getMessage());
         //return sessionScopedBean.getMessage();
-        return sessionScopedBean.toString();
+        //return sessionScopedBean.toString();
+        return "scopesExample";
     }
 
     @RequestMapping("/application")
-    public String getApplicationScopeMessage() {
+    public String getApplicationScopeMessage(final Model model) {
+        model.addAttribute("previousMessage", applicationScopedBean.getMessage());
         logger.info("previousMessage : {}", applicationScopedBean.getMessage());
         applicationScopedBean.setMessage("Good night!");
         logger.info("currentMessage : {}", applicationScopedBean.getMessage());
+        model.addAttribute("currentMessage", applicationScopedBean.getMessage());
         //return applicationScopedBean.getMessage();
-        return applicationScopedBean.toString();
+        //return applicationScopedBean.toString();
+        return "scopesExample";
     }
 
     @RequestMapping("/singleton-person")
@@ -85,7 +94,8 @@ public class ScopesController {
             sPersonBean.setName(name);
         }
         logger.info("Person name: " + sPersonBean.getName());
-        return "Person@" + System.identityHashCode(sPersonBean);
+        //return "Person@" + System.identityHashCode(sPersonBean);
+        return "scopesExample";
     }
 
     @RequestMapping("/prototype-person/{id}")
@@ -95,7 +105,8 @@ public class ScopesController {
         if (id % 2 == 0)
             pPersonBean.setName(NAME_OTHER);
         logger.info("AFTER - Person name: " + pPersonBean.getName());
-        return "Person@" + System.identityHashCode(pPersonBean);
+        //return "Person@" + System.identityHashCode(pPersonBean);
+        return "scopesExample";
     }
 
     @RequestMapping("/singleton")
