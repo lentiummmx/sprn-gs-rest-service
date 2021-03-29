@@ -11,8 +11,8 @@ import java.util.List;
 @TestConfiguration
 public class CustomerServiceTestContextConfiguration {
     @Bean
-//    public ICustomerService customerServiceTest() {
-    public ICustomerService customerService() {
+    public ICustomerService customerServiceTest() {
+//    public ICustomerService customerService() {
         return new ICustomerService() {
             @Override
             public List<Customer> findByLastName(String lastName) {

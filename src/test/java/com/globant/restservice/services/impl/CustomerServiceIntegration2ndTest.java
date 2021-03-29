@@ -6,6 +6,7 @@ import com.globant.restservice.services.ICustomerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CustomerServiceIntegration2ndTest {
 
     @Autowired
+    @Qualifier("customerServiceTest")
 //    @Resource(name = "customerServiceTest")
     private ICustomerService customerService;
 

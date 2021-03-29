@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -27,8 +28,8 @@ public class CustomerServiceIntegrationTest {
 //    static class CustomerServiceTestCntxtConfg {
     static class CustomerServiceTestContextConfiguration {
         @Bean
-//        public ICustomerService customerServiceTest() {
-        public ICustomerService customerService() {
+        public ICustomerService customerServiceTest() {
+//        public ICustomerService customerService() {
             return new ICustomerService() {
                 @Override
                 public List<Customer> findByLastName(String lastName) {
@@ -52,6 +53,7 @@ public class CustomerServiceIntegrationTest {
     }
 
     @Autowired
+    @Qualifier("customerServiceTest")
 //    @Resource(name = "customerServiceTest")
     private ICustomerService customerService;
 
