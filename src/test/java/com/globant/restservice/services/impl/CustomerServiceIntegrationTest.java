@@ -2,8 +2,9 @@ package com.globant.restservice.services.impl;
 
 import com.globant.restservice.models.Customer;
 import com.globant.restservice.services.ICustomerService;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -17,15 +18,17 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//@RunWith(SpringRunner.class) // JUnit4
-@ExtendWith(SpringExtension.class)  // JUnit 5
+@RunWith(SpringRunner.class) // JUnit4
+//@ExtendWith(SpringExtension.class)  // JUnit 5
 //@SpringBootTest
-class CustomerServiceIntegrationTest {
+public class CustomerServiceIntegrationTest {
 
     @TestConfiguration
-    static class CustomerServiceTestCntxtConfg {
+//    static class CustomerServiceTestCntxtConfg {
+    static class CustomerServiceTestContextConfiguration {
         @Bean
-        public ICustomerService customerServiceTest() {
+//        public ICustomerService customerServiceTest() {
+        public ICustomerService customerService() {
             return new ICustomerService() {
                 @Override
                 public List<Customer> findByLastName(String lastName) {
@@ -48,12 +51,12 @@ class CustomerServiceIntegrationTest {
         }
     }
 
-//    @Autowired
-    @Resource(name = "customerServiceTest")
+    @Autowired
+//    @Resource(name = "customerServiceTest")
     private ICustomerService customerService;
 
     @Test
-    void findByLastName() {
+    public void findByLastName() {
         List<Customer> testLst = new ArrayList<>();
         Customer customer = new Customer("Jack", "Bauer");
         customer.setId(1L);
@@ -66,6 +69,6 @@ class CustomerServiceIntegrationTest {
     }
 
     @Test
-    void findById() {
+    public void findById() {
     }
 }

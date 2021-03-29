@@ -1,35 +1,31 @@
 package com.globant.restservice.services.impl;
 
-import com.globant.restservice.configs.CustomerServiceTestCntxtConfg;
+import com.globant.restservice.configs.CustomerServiceTestContextConfiguration;
 import com.globant.restservice.models.Customer;
 import com.globant.restservice.services.ICustomerService;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
-import org.springframework.context.annotation.Bean;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@RunWith(SpringRunner.class)  // JUnit4
-@ExtendWith(SpringExtension.class)  // JUnit 5
+@RunWith(SpringRunner.class)  // JUnit4
+//@ExtendWith(SpringExtension.class)  // JUnit 5
 //@SpringBootTest
-@Import(CustomerServiceTestCntxtConfg.class)
-class CustomerServiceIntegration2ndTest {
+@Import(CustomerServiceTestContextConfiguration.class)
+public class CustomerServiceIntegration2ndTest {
 
-//    @Autowired
-    @Resource(name = "customerServiceTest")
+    @Autowired
+//    @Resource(name = "customerServiceTest")
     private ICustomerService customerService;
 
     @Test
-    void findByLastName() {
+    public void findByLastName() {
         List<Customer> testLst = new ArrayList<>();
         Customer customer = new Customer("Jack", "Bauer");
         customer.setId(1L);
@@ -42,6 +38,6 @@ class CustomerServiceIntegration2ndTest {
     }
 
     @Test
-    void findById() {
+    public void findById() {
     }
 }

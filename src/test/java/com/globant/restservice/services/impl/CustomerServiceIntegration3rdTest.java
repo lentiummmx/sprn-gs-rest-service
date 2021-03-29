@@ -1,38 +1,36 @@
 package com.globant.restservice.services.impl;
 
-import com.globant.restservice.configs.CustomerServiceTestCntxtConfg;
 import com.globant.restservice.models.Customer;
 import com.globant.restservice.repositories.CustomerRepository;
 import com.globant.restservice.services.ICustomerService;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
-//@RunWith(SpringRunner.class)  // JUnit4
-@ExtendWith(SpringExtension.class)  // JUnit 5
+@RunWith(SpringRunner.class)  // JUnit4
+//@ExtendWith(SpringExtension.class)  // JUnit 5
 //@SpringBootTest
-class CustomerServiceIntegration3rdTest {
+public class CustomerServiceIntegration3rdTest {
 
     @TestConfiguration
-    static class CustomerServiceTestCntxtConfg {
+    static class CustomerServiceTestContextConfiguration {
         @Bean
         public ICustomerService customerServiceTest() {
+//        public ICustomerService customerService() {
             return new CustomerService();
         }
     }
@@ -45,8 +43,8 @@ class CustomerServiceIntegration3rdTest {
     @MockBean
     private CustomerRepository customerRepository;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         List<Customer> testLst = new ArrayList<>();
         Customer customer = new Customer("Jack", "Bauer");
         customer.setId(1L);
@@ -59,7 +57,7 @@ class CustomerServiceIntegration3rdTest {
     }
 
     @Test
-    void findByLastName() {
+    public void findByLastName() {
         List<Customer> testLst = new ArrayList<>();
         Customer customer = new Customer("Jack", "Bauer");
         customer.setId(1L);
@@ -74,6 +72,6 @@ class CustomerServiceIntegration3rdTest {
     }
 
     @Test
-    void findById() {
+    public void findById() {
     }
 }

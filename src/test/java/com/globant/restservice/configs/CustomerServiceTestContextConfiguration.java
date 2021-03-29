@@ -9,9 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @TestConfiguration
-public class CustomerServiceTestCntxtConfg {
+public class CustomerServiceTestContextConfiguration {
     @Bean
-    public ICustomerService customerServiceTest() {
+//    public ICustomerService customerServiceTest() {
+    public ICustomerService customerService() {
         return new ICustomerService() {
             @Override
             public List<Customer> findByLastName(String lastName) {

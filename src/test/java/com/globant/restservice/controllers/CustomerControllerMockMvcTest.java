@@ -4,6 +4,7 @@ import com.globant.restservice.RestServiceApplication;
 import com.globant.restservice.services.ICustomerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,8 +19,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//@RunWith(SpringRunner.class) // JUnit4
-@ExtendWith(SpringExtension.class)  // JUnit 5
+@RunWith(SpringRunner.class) // JUnit4
+//@ExtendWith(SpringExtension.class)  // JUnit 5
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = RestServiceApplication.class)
 @AutoConfigureMockMvc
 @TestPropertySource(locations = "classpath:application-integration-test.properties")
